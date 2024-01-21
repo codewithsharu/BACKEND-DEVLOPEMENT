@@ -35,5 +35,6 @@ app.get("/posts/new", (req, res) => {
 });
 
 app.post("/posts", (req, res) => {
+    console.log(req.body);
     res.send("post working");
 });
