@@ -28,3 +28,8 @@ app.get("/", (req, res) => {
 app.get("/posts", (req, res) => {
     res.render('posts.ejs', { posts });
 });
+
+
+app.get("/posts/new", (req, res) => {
+    res.render('new.ejs');
+});

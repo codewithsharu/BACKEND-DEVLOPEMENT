@@ -1,0 +1,46 @@
+{
+    "MIA": {
+      "name": "MIA",
+      "followers": 25000,
+      "following": 5,
+      "posts": [
+        {
+          "image": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg",
+          "likes": 200,
+          "comments": 17
+        },
+        {
+          "image": "https://images.pexels.com/photos/34534/people-peoples-homeless-male.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "likes": 312,
+          "comments": 19
+        },
+        {
+          "image": "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "likes": 1065,
+          "comments": 200
+        }
+      ]
+    },
+    "JONNY": {
+      "name": "jonny sins",
+      "followers": 75000,
+      "following": 150,
+      "posts": [
+        {
+          "image": "https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "likes": 3000,
+          "comments": 41
+        },
+        {
+          "image": "https://images.pexels.com/photos/1759531/pexels-photo-1759531.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "likes": 2500,
+          "comments": 32
+        },
+        {
+          "image": "https://images.pexels.com/photos/219550/pexels-photo-219550.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "likes": 500,
+          "comments": 6
+        }
+      ]
+    }
+  }
