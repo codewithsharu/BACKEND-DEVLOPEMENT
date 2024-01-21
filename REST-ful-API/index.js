@@ -33,3 +33,7 @@ app.get("/posts", (req, res) => {
 app.get("/posts/new", (req, res) => {
     res.render('new.ejs');
 });
+
+app.post("/posts", (req, res) => {
+    res.send("post working");
+});
