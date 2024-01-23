@@ -5,5 +5,6 @@ git add . ; git commit -am "Your commit message" ; git push origin main
 
 // shortcut command 
 git config --global alias.gm '!f() { git add . && git commit -m "$1" && git push origin main; }; f'
+changed at 11.22
 
 git gm "Your commit message"
