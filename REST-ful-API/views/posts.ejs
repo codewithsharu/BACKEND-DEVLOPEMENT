@@ -14,7 +14,10 @@
             <h2>id: @<%= post.id %></h2>
             <h2>user: @<%= post.username %></h2>
             <h3>content: <br> <%= post.content %></h3>
-            <a href="http://localhost:8989/posts/<%=post.id%>" >show it</a>
+            <a href="http://localhost:8989/posts/<%=post.id%>" >show it...</a> 
+            <a href="http://localhost:8989/posts/d/<%=post.id%>" >delete</a> <br>
+            <a href="http://localhost:8989/posts/e/<%=post.id%>" >edit</a> <br>
+
 
         </div>
     <% } %>

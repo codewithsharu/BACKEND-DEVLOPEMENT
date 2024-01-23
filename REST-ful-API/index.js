@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const {v4:xid} = require('uuid');
+const methodOverride = require('method-override');
+const { Console } = require('console');
 //express ki direct data ardam kadhu so midleware vadi encode chestam recieve ina data ni 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 let port = 8989;
 
@@ -48,6 +51,41 @@ app.get("/posts/:id", (req, res) => {
 
 app.post("/posts", (req, res) => {
     let {username , content} = req.body;
-    posts.push({username , content});
+    let id =xid();
+    posts.push({username , content,id});
     res.redirect("/posts");
+});
+
+app.get("/posts/d/:id", (req, res) => {
+    
+    let {id}=req.params;
+    posts = posts.filter(post => post.id !== id);
+    res.redirect('/posts');
+    res.render('show.ejs',{post});
+
+});
+app.get("/posts/e/:id", (req, res) => {
+    let { id } = req.params;
+    res.render('edit.ejs', { id });
+});
+
+
+app.patch("/posts/:id", (req, res) => {
+    const { id } = req.params;
+    console.log("ID from URL:", id);
+    console.log("All Posts:", posts);
+
+    const newContent = req.body.content;
+    console.log("New Content:", newContent);
+
+    const post = posts.find(p => p.id === id); 
+    console.log("Found Post:", post);
+    // Check if the post is found
+    if (post) {
+        // Update the content of the post
+        post.content = newContent;
+        res.redirect("/posts");
+    } else {
+        res.status(404).send("Post not found");
+    }
 });
