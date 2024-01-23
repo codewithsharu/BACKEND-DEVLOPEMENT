@@ -9,6 +9,7 @@
   "author": "shareen",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^8.3.1"
+    "@faker-js/faker": "^8.3.1",
+    "mysql2": "^3.8.0"
   }
 }
