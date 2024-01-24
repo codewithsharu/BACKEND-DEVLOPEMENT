@@ -2,6 +2,7 @@
 //single command 
 git add . ; git commit -am "Your commit message" ; git push origin main
 
+tirmla
 
 // shortcut command 
 git config --global alias.gmp '!f() { git gm "$1" && git push origin main; }; f'

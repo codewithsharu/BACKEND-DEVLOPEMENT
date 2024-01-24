@@ -1,7 +1,6 @@
 const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
 
-// Create the connection to the database
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -10,7 +9,7 @@ const connection = mysql.createConnection({
 });
 
 try {
-  // Corrected query: 'SHOW TABLES'
+  
   connection.query("SHOW TABLES", (err, result) => {
     if (err) throw err;
     console.log(result);
@@ -28,11 +27,11 @@ let createRandomUser = () => {
     email: faker.internet.email(),
     avatar: faker.image.avatar(),
     password: faker.internet.password(),
-    // Corrected property: 'faker.date.past()' for a past birthdate
+   
     birthdate: faker.date.past(),
     registeredAt: faker.date.past(),
   };
 }
 
-// Corrected: 'console.log(createRandomUser());'
+
 console.log(createRandomUser());
