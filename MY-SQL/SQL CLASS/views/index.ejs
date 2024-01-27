@@ -1,0 +1,19 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+</head>
+<body>
+    <h1>Customer List</h1>
+    <ul>
+        <% for (let i = 0; i < customers.length; i++) { %>
+            <li><%= customers[i].name %> - <%= customers[i].address %></li>
+        <% } %>
+    </ul>
+    
+</body>
+</html>
