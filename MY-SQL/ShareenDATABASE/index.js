@@ -99,6 +99,7 @@ app.get("/user/:id/edit", (req, res) => {
     connection.query(q, (err, result) => {
       if (err) throw err;
       let x = result[0];
+      console.log(x);
       res.render("edit.ejs", {x}); // Passing user data to the edit.ejs template
     });
   } catch (err) {
@@ -106,8 +107,28 @@ app.get("/user/:id/edit", (req, res) => {
     res.send("Some error occurred in the database");
   }
 });
-
-
 app.patch("/user/:id", (req, res) => {
-   res.send("updated");
+  let { id } = req.params;
+  let { password: formPass, username: newUsername } = req.body;
+  console.log(req.body);
+  let q = `SELECT * FROM user WHERE id = '${id}'`;
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      
+      let user = result[0];
+      if (formPass !== user.password) {
+        res.send("Wrong password");
+      } else {
+        let q2 = `UPDATE user SET username = '${newUsername}' WHERE id = '${id}'`;
+        connection.query(q2, (err, updateResult) => {
+          if (err) throw err;
+          res.redirect('/user');
+        });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some error occurred in DB");
+  }
 });
