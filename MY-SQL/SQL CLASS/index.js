@@ -1,4 +1,3 @@
-const { faker } = require('@faker-js/faker');
 const mysql = require('mysql2');
 const express = require('express');
 const path = require('path');
@@ -85,15 +84,33 @@ app.post('/update/:id', (req, res) => {
   });
 });
 
+// Route to delete a customer
+app.get('/delete/:id', (req, res) => {
+  const customerId = req.params.id;
+  const deleteSQL = 'DELETE FROM customers WHERE id = ?';
+  
+  con.query(deleteSQL, [customerId], (err, result) => {
+    if (err) {
+      console.error('Error deleting customer data:', err);
+      res.status(500).send('Error deleting customer data from database');
+      return;
+    }
+    console.log('Data deleted successfully');
+    res.redirect('/');
+  });
+});
+
 // Route to display a list of customers
 app.get('/', (req, res) => {
-  const selectAllSQL = 'SELECT * FROM customers';
+  const selectAllSQL = 'SELECT id, name, address FROM customers'; // Include ID in the SELECT statement
   con.query(selectAllSQL, (err, rows) => {
     if (err) {
       console.error('Error retrieving customers:', err);
       res.status(500).send('Error retrieving customers from database');
       return;
     }
+  
+    // Render the list of customers
     res.render('index', { customers: rows });
   });
 });

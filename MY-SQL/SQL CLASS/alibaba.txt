@@ -1,0 +1,32 @@
+Remote-SSH
+
+
+
+cd ~/.ssh
+notepad config
+
+
+Host alibaba-instance
+  HostName alibaba-instance
+
+Host 47.254.255.171
+  HostName 47.254.255.171
+  User root
+
+
+
+Instance Metadata:
+
+You can also retrieve some information about your instance, including the SSH key fingerprint, from within the instance itself using commands like ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub.
+
+
+
+cat ~/.ssh/id_rsa.pub
+
+
+cat /etc/ssh/sshd_config | grep Port
+
+sudo vi /etc/ssh/sshd_config
+
+
+
