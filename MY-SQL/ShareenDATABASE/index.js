@@ -129,6 +129,6 @@ app.patch("/user/:id", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error occurred in DB");
+    res.send("Some error occurred in D");
   }
 });
