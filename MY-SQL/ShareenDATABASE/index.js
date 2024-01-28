@@ -62,3 +62,29 @@ app.get('/', (req, res) => {
       res.send("Some error occurred while querying the database");
   }
 });
+
+
+app.get('/user', (req, res) => {
+  let q = 'SELECT * FROM user'; // Query to select all users
+  let countQuery = 'SELECT COUNT(*) AS count FROM user'; // Query to get the count of users
+
+  try {
+    connection.query(q, (err, users) => {
+      if (err) throw err;
+
+      // Execute the count query
+      connection.query(countQuery, (err, countResult) => {
+        if (err) throw err;
+
+        // Extract the count from the result
+        const count = countResult[0].count;
+
+        // Render the 'user' view with the 'users' data and the 'count'
+        res.render('user', { users, count });
+      });
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some error occurred while querying the database");
+  }
+});

@@ -109,11 +109,12 @@ app.get('/', (req, res) => {
       res.status(500).send('Error retrieving customers from database');
       return;
     }
-  
     // Render the list of customers
     res.render('index', { customers: rows });
   });
 });
+
+
 
 app.listen(8888, () => {
   console.log("Server is listening on port 8888");
