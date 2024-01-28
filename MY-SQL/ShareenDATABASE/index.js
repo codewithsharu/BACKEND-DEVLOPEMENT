@@ -3,10 +3,13 @@ const mysql = require('mysql2');
 const express = require('express');
 const app = express();
 const path = require("path"); 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "/views"));
+app.use(express.urlencoded({ extended: true })); // Middleware to parse form data
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -87,4 +90,24 @@ app.get('/user', (req, res) => {
     console.log(err);
     res.send("Some error occurred while querying the database");
   }
+});
+
+app.get("/user/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let q = `SELECT * FROM user WHERE id = '${id}'`;
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      let x = result[0];
+      res.render("edit.ejs", {x}); // Passing user data to the edit.ejs template
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some error occurred in the database");
+  }
+});
+
+
+app.patch("/user/:id", (req, res) => {
+   res.send("updated");
 });
