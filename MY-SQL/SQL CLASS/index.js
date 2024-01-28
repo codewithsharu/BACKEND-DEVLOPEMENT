@@ -102,7 +102,7 @@ app.get('/delete/:id', (req, res) => {
 
 // Route to display a list of customers
 app.get('/', (req, res) => {
-  const selectAllSQL = 'SELECT id, name, address FROM customers'; // Include ID in the SELECT statement
+  const selectAllSQL = 'SELECT id, name, address FROM customers'; 
   con.query(selectAllSQL, (err, rows) => {
     if (err) {
       console.error('Error retrieving customers:', err);
@@ -115,8 +115,6 @@ app.get('/', (req, res) => {
   });
 });
 
-const port = 4000;
-
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
+app.listen(8888, () => {
+  console.log("Server is listening on port 8888");
 });

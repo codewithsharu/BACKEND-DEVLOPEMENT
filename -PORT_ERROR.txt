@@ -1,0 +1,3 @@
+netstat -ano | findstr :8888
+
+taskkill /F /PID 17744
