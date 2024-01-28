@@ -1,34 +1,15 @@
-const mysql = require('mysql2');
+const { faker } = require('@faker-js/faker');
 
-// Create a connection to the database
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  database: "shareen",
-  password: ""
-});
-
-// Define the SQL query
-const q = "SHOW TABLES";
-
-// Execute the query
-connection.query(q, (err, result) => {
-  if (err) throw err;
-
-  // Output the result
-  console.log(result);
-  
-  // Output the number of tables
-  console.log("Number of tables:", result.length);
-
-  // Output each table name
-  // Iterate through the result array and print each table name
-for (let i = 0; i < result.length; i++) {
-  // Access the table name from the result row and print it
-  console.log(result[i]);
+let createRandomUser = ()=>{
+  return {
+    userId: faker.string.uuid(),
+    username: faker.internet.userName(),
+    email: faker.internet.email(),
+    avatar: faker.image.avatar(),
+    password: faker.internet.password(),
+    birthdate: faker.date.birthdate(),
+    registeredAt: faker.date.past(),
+  };
 }
 
-});
-
-// Close the connection
-connection.end();
+console.log(createRandomUser());

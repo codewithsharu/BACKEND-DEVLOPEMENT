@@ -15,3 +15,6 @@ git config --global alias.gmp '!f() { git gm "$1" && git push origin main; }; f'
 git gmp "Your commit message"
 
 
+hard reset 
+
+git reset --hard HEAD
