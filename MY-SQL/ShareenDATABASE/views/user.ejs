@@ -27,7 +27,9 @@
             <td><form method="GET" action="/user/<%= user.id %>/edit">
                 <button type="submit">Edit username</button>
               </form></td>
-              
+              <td><form method="GET" action="/user/<%= user.id %>/d">
+                <button type="submit">DELETE</button>
+              </form></td>      
           </tr>
         <% } %>
       </table>

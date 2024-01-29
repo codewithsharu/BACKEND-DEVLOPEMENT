@@ -132,3 +132,17 @@ app.patch("/user/:id", (req, res) => {
     res.send("Some error occurred in D");
   }
 });
+
+app.get("/user/:id/d", (req, res) => {
+  const { id } = req.params; // Extract the user ID from the request parameters
+  const q = `DELETE FROM user WHERE id = '${id}'`; // SQL query to delete the row with the given ID
+  try {
+    connection.query(q, (err, result) => {
+      if (err) throw err;
+      res.redirect('/user'); // Redirect back to the user list page after successful deletion
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("Some error occurred while deleting the user");
+  }
+});
