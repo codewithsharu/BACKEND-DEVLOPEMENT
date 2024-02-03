@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import './App.css';
 
 function App(props) {
- console.log(props);
+  console.log(props);
   return (
-    <>
-     <h1>hi bro</h1>
-    </>
-  )
+    <div className="card">
+      <h1>{props.title}</h1>
+      <h1>{props.sec}</h1>
+    </div>
+  );
 }
 
-export default App
-hgg
+export default App;
