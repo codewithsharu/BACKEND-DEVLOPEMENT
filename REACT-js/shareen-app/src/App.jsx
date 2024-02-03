@@ -7,6 +7,7 @@ function App(props) {
     <div className="card">
       <h1>{props.title}</h1>
       <h1>{props.sec}</h1>
+      <h1>{props.option}</h1>
     </div>
   );
 }
