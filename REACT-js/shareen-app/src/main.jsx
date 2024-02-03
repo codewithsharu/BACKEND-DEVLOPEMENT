@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import './index.css';
 
-let o = ['x', 'y', 'z'];
+let o = [ <li>x</li>,
+<li>y</li>,
+<li>z</li>];
 let dic = {
   x: 'value_x',
   y: 'value_y',
