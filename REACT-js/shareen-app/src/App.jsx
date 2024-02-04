@@ -2,8 +2,10 @@ import React from 'react';
 import './App.css';
 
 function App(props) {
-  let s = { backgroundColor: "blue" }; 
-  console.log(props);
+  let s = {
+    backgroundColor: props.sec === "A" ? "goldenrod" : "blue"
+  };
+
   return (
     <div className="card" style={s}>
       <h1>{props.title}</h1>
@@ -14,3 +16,4 @@ function App(props) {
 }
 
 export default App;
+
