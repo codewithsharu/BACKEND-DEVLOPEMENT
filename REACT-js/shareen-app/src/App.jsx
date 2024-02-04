@@ -3,7 +3,7 @@ import './App.css';
 
 function App(props) {
   let s = {
-    backgroundColor: props.sec === "A" ? "goldenrod" : "orage"
+    backgroundColor: props.sec === "A" ? "goldenrod" : "black"
   };
 
   return (
