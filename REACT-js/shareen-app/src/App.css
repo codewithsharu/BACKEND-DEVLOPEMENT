@@ -1,16 +1,8 @@
-.Product {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 2rem;
-}
 
 #root {
   
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  border: 2px solid yellow;
+  border: 8px solid yellow;
 }
