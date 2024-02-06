@@ -2,7 +2,7 @@
 
 import "./App.css"; 
 import ProductTab from "./ProductTab.jsx"; 
-function App() { 
+function App() {
   return (
     <ProductTab /> 
   );
