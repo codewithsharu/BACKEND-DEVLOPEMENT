@@ -1,11 +1,12 @@
 def aStarAlgo(start_node, stop_node):
     open_set = set(start_node)
     closed_set = set()
-    g = {}               #store distance from starting node
+    g = {}
     parents = {}         # parents contains an adjacency map of all nodes
     #distance of starting node from itself is zero
     g[start_node] = 0
-    #start_node is root node i.e it has no parent nodes so start_node is set to its own parent node
+    #start_node is root node i.e it has no 
+    parent nodes so start_node is set to its own parent node
     parents[start_node] = start_node
     while len(open_set) > 0:
         n = None
