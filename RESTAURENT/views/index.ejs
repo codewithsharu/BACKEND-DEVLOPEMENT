@@ -1,0 +1,30 @@
+<!-- C:\Users\danda\OneDrive\Documents\Desktop\GIT-online\BACKEND\BACKEND-DEVLOPEMENT\RESTAURENT\views\index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order System</title>
+</head>
+<body>
+    <h1>Order System</h1>
+    <% for (let table in tables) { %>
+        <h2>Table <%= table %></h2>
+        <% if (tables[table].length > 0) { %>
+            <ul>
+                <% tables[table].forEach((dish, index) => { %>
+                    <li><%= dish %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No orders yet.</p>
+        <% } %>
+        <form action="/order" method="post">
+            <input type="hidden" name="tableNumber" value="<%= table %>">
+            <input type="text" name="dishName" placeholder="Enter dish name">
+            <button type="submit">Order</button>
+        </form>
+    <% } %>
+</body>
+</html>
