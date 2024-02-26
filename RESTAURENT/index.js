@@ -1,4 +1,4 @@
-// C:\Users\danda\OneDrive\Documents\Desktop\GIT-online\BACKEND\BACKEND-DEVLOPEMENT\RESTAURENT\index.js
+
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -6,12 +6,12 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 const path = require("path"); 
-// Create connection to MySQL
+
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root', // Your MySQL username
-    password: '', // Your MySQL password
-    database: 'restaurant' // Your database name
+    user: 'root',
+    password: '',
+    database: 'restaurant'
 });
 
 connection.connect((err) => {
@@ -21,13 +21,12 @@ connection.connect((err) => {
     }
     console.log('Connected to MySQL as id ' + connection.threadId);
 });
-app.set("views", path.join(__dirname, "/views"));
 
+app.set("views", path.join(__dirname, "/views"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    // Fetch data from the database to display orders
     connection.query('SELECT * FROM orders', (error, results) => {
         if (error) throw error;
         const tables = {};
@@ -47,18 +46,16 @@ app.get('/t/:tableNumber', (req, res) => {
     const tableNumber = req.params.tableNumber;
     res.render('dishes', { tableNumber: tableNumber });
 });
+
 app.post('/order', (req, res) => {
     const tableNumber = req.body.tableNumber;
     let selectedDishes = req.body.selectedDishes;
 
-    // Ensure selectedDishes is always an array
     if (!Array.isArray(selectedDishes)) {
         selectedDishes = [selectedDishes];
     }
 
-    // Loop through the selected dishes
     selectedDishes.forEach(dishName => {
-        // Update the count for the dish in the respective table
         const updateCountQuery = `UPDATE table${tableNumber} SET count = count + 1 WHERE dish_name = ?`;
         connection.query(updateCountQuery, [dishName], (error, updateResults) => {
             if (error) {
@@ -66,10 +63,7 @@ app.post('/order', (req, res) => {
                 return res.status(500).send('Error updating dish count');
             }
             
-            // Check if any rows were affected
             if (updateResults.affectedRows === 0) {
-                // If no rows were updated, it means the dish doesn't exist in the table
-                // Insert the new dish with a count of 1
                 const insertDishQuery = `INSERT INTO table${tableNumber} (dish_name, count) VALUES (?, 1)`;
                 connection.query(insertDishQuery, [dishName], (error, insertResults) => {
                     if (error) {
@@ -88,10 +82,7 @@ app.post('/order', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    // Define an array to store promises for querying each table
     const tableQueries = [];
-
-    // Query data for each table
     for (let i = 1; i <= 5; i++) {
         const query = `SELECT * FROM table${i}`;
         const promise = new Promise((resolve, reject) => {
@@ -106,10 +97,8 @@ app.get('/admin', (req, res) => {
         tableQueries.push(promise);
     }
 
-    // Execute all promises
     Promise.all(tableQueries)
         .then(results => {
-            // Render the admin.ejs template with the retrieved data
             res.render('admin', { tablesData: results });
         })
         .catch(error => {
@@ -121,7 +110,6 @@ app.get('/admin', (req, res) => {
 app.post('/order_completed', (req, res) => {
     const tableNumber = req.body.tableNumber;
 
-    // Truncate the table associated with the provided table number
     const truncateQuery = `TRUNCATE TABLE table${tableNumber}`;
     connection.query(truncateQuery, (error, results) => {
         if (error) {
