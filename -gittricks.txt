@@ -4,7 +4,7 @@ git add . ; git commit -am "Your commit message" ; git push origin main
 
 tirmla
 
-// shortcut command. 
+// shortcut command. G
 
 
 git config --global alias.gm '!f() { git add . && git commit -m "$1" && git push origin main; }; f'
@@ -14,7 +14,7 @@ git config --global alias.gmp '!f() { git gm "$1" && git push origin main; }; f'
 git config --global alias.gmp '!f() { git gm "$1" && git push origin main; }; f'
 git gmp "Your commit message"
 
-
+,
 hard reset 
 
 git reset --hard HEAD
